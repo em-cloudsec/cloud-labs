@@ -42,6 +42,9 @@ week1-day2-iam-readonly/README.md
 - ❌ Attempted to create a new S3 bucket → *Access Denied*.
 - ❌ Attempted to add a new IAM user → *Access Denied*.
 
+### Example Error Output
+
+
 User: arn:aws:iam::693986728494:user/cl0udreadonly
 Action: iam:CreateUser
 Resource: arn:aws:iam::693986728494:user/testing-readonly
