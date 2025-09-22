@@ -59,3 +59,40 @@ Result: AccessDenied – no identity-based policy allows the action
 ## Evidence
 - Verified login as `readonly-user`.
 - AWS console produced “Access Denied” when attempting restricted actions.
+
+week1-day3-s3-misconfig/README.md
+
+# Day 3 – S3 Misconfiguration & Fix
+
+## Objective
+- Demonstrate a common cloud security risk: public S3 buckets.
+- Learn how to identify and remediate misconfigurations.
+
+## Steps Completed
+1. Created S3 bucket `earl-labs-bucket-01`.
+2. Uploaded `test.txt` and copied the Object URL.
+3. Added a public-read bucket policy to simulate misconfiguration.
+4. Verified public accessibility in incognito browser (HTTP 200).
+5. Removed the bucket policy and re-enabled Block Public Access.
+6. Verified access was denied (HTTP 403).
+
+## Results
+- ✅ File was visible publicly when misconfigured (HTTP 200).
+- ❌ File was blocked after remediation (HTTP 403).
+
+### Example Access Test
+
+#### Public Access (before remediation)
+```text
+HTTP 200 OK
+test.txt contents: Hello from the bucket!
+Object URL: https://<your-object-url>
+
+<Error>
+  <Code>AccessDenied</Code>
+  <Message>Access Denied</Message>
+  <RequestId>AD7V8PEPZ7ZTRE9Y</RequestId>
+  <HostId>3F3v2csH3X0Ccm1MKxvM5b82IlnVp1aNzgc7XqyqBNv6MAsjiID+qj7Ng1kSQA3vBgUDk9ZCLTpv+Y5kQWyqw8vUJlxXR5n2Z4ynr7jmL3k=</HostId>
+</Error>
+
+
