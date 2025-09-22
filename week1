@@ -44,12 +44,12 @@ week1-day2-iam-readonly/README.md
 
 ### Example Error Output
 
-
+```
 User: arn:aws:iam::693986728494:user/cl0udreadonly
 Action: iam:CreateUser
 Resource: arn:aws:iam::693986728494:user/testing-readonly
 Result: AccessDenied – no identity-based policy allows the action
-
+```
 
 
 ## Key Learnings
