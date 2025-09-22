@@ -1,0 +1,59 @@
+week1-day1-admin-setup
+# Day 1 – AWS Admin Setup
+
+## Objective
+- Secure the AWS root account with MFA.
+- Create an IAM admin user (`cl0udadmin`) for daily use instead of root.
+
+## Steps Completed
+1. Signed up for AWS Free Tier account.
+2. Enabled MFA on the root account.
+3. Created IAM user `cl0udadmin` with:
+   - AdministratorAccess policy
+   - IAMUserChangePassword policy
+4. Logged out of root → confirmed login with `cl0udadmin`.
+
+## Key Learnings
+- Root account should only be used for billing and emergencies.
+- MFA adds a second layer of defense.
+- Admin users can be created to handle daily tasks securely.
+
+## Evidence
+- MFA successfully enabled for root.
+- `cl0udadmin` created and used for login.
+
+week1-day2-iam-readonly/README.md
+
+# Day 2 – IAM Permissions Lab (ReadOnly User)
+
+## Objective
+- Understand the principle of least privilege in AWS.
+- Compare Admin user vs. ReadOnly user.
+
+## Steps Completed
+1. Logged in as `cl0udadmin` (Admin IAM user).
+2. Created IAM user `readonly-user` with:
+   - Console login enabled
+   - ReadOnlyAccess policy attached
+3. Logged in as `readonly-user` and tested actions.
+
+## Results
+- ✅ Able to view S3 buckets and IAM users.
+- ❌ Attempted to create a new S3 bucket → *Access Denied*.
+- ❌ Attempted to add a new IAM user → *Access Denied*.
+
+### Example Error Output
+
+User: arn:aws:iam::693986728494:user/cl0udreadonly
+Action: iam:CreateUser
+Resource: arn:aws:iam::693986728494:user/testing-readonly
+Result: AccessDenied – no identity-based policy allows the action
+
+
+## Key Learnings
+- ReadOnlyAccess policy allows visibility without modification.
+- Demonstrates the **Principle of Least Privilege** — users should only have permissions they truly need.
+
+## Evidence
+- Verified login as `readonly-user`.
+- AWS console produced “Access Denied” when attempting restricted actions.
